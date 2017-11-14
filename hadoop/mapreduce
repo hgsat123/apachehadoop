@@ -1,0 +1,16 @@
+#!/bin/bash
+
+export HADOOP_PREFIX=/usr/local/hadoop
+export PATH=$PATH:/usr/local/hadoop/bin
+export JARPATH=/usr/local/hadoop/share
+
+## Check Hadoop process are running
+jps
+
+## Perform MapReduce
+
+hadoop jar $JARPATH/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.2.jar grep input output 'dfs[a-z.]+'
+
+
+## Display Mapreduce Output
+hdfs dfs -cat output/*
